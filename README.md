@@ -1,38 +1,138 @@
-Role Name
-=========
+Ansible Role: bat
+=================
 
-A brief description of the role goes here.
+[![Build Status](https://travis-ci.com/gantsign/ansible_role_bat.svg?branch=master)](https://travis-ci.com/gantsign/ansible_role_bat)
+[![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-gantsign.bat-blue.svg)](https://galaxy.ansible.com/gantsign/bat)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/gantsign/ansible_role_bat/master/LICENSE)
+
+Role to download and install [bat](https://github.com/sharkdp/bat) the
+advanced alternative to `cat`.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+* Ansible >= 2.4
+
+* Linux Distribution
+
+    * Debian Family
+
+        * Debian
+
+            * Jessie (8)
+            * Stretch (9)
+
+        * Ubuntu
+
+            * Xenial (16.04)
+            * Bionic (18.04)
+
+        * Note: other versions are likely to work but have not been tested.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+The following variables will change the behavior of this role (default values
+are shown below):
 
-Dependencies
-------------
+```yaml
+# bat version number
+bat_version: '0.7.1'
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+# The SHA256 of the bat redistributable package
+bat_redis_sha256sum: '6c66671385fc219db4adc94c86038c00fb76ad90aaeccf8ab89992def1079fcc'
+
+# Directory to store files downloaded for bat
+bat_download_dir: "{{ x_ansible_download_dir | default(ansible_env.HOME + '/.ansible/tmp/downloads') }}"
+```
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+```yaml
+- hosts: servers
+  roles:
+    - role: gantsign.bat
+```
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+Tab Completion for Zsh
+----------------------
+
+### Using Ansible
+
+The recommended way to enable Zsh support for `bat` is to use the
+[gantsign.antigen](https://galaxy.ansible.com/gantsign/antigen) role (this must
+be configured for each user).
+
+
+```yaml
+- hosts: servers
+  roles:
+    - role: gantsign.hub
+
+    - role: gantsign.antigen
+      users:
+        - username: example
+          antigen_bundles:
+            - name: bat
+              url: gantsign/zsh-plugins
+              location: bat
+```
+
+### Using Antigen
+
+If you prefer to use [Antigen](https://github.com/zsh-users/antigen) directly
+add the following to your Antigen configuration:
+
+```bash
+antigen bundle gantsign/zsh-plugins bat
+```
+
+More Roles From GantSign
+------------------------
+
+You can find more roles from GantSign on
+[Ansible Galaxy](https://galaxy.ansible.com/gantsign).
+
+Development & Testing
+---------------------
+
+This project uses [Molecule](http://molecule.readthedocs.io/) to aid in the
+development and testing; the role is unit tested using
+[Testinfra](http://testinfra.readthedocs.io/) and
+[pytest](http://docs.pytest.org/).
+
+To develop or test you'll need to have installed the following:
+
+* Linux (e.g. [Ubuntu](http://www.ubuntu.com/))
+* [Docker](https://www.docker.com/)
+* [Python](https://www.python.org/) (including python-pip)
+* [Ansible](https://www.ansible.com/)
+* [Molecule](http://molecule.readthedocs.io/)
+
+Because the above can be tricky to install, this project includes
+[Molecule Wrapper](https://github.com/gantsign/molecule-wrapper). Molecule
+Wrapper is a shell script that installs Molecule and it's dependencies (apart
+from Linux) and then executes Molecule with the command you pass it.
+
+To test this role using Molecule Wrapper run the following command from the
+project root:
+
+```bash
+./moleculew test
+```
+
+Note: some of the dependencies need `sudo` permission to install.
 
 License
 -------
 
-BSD
+MIT
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+John Freeman
+
+GantSign Ltd.
+Company No. 06109112 (registered in England)

@@ -1,2 +1,9 @@
 ---
-# vars file for ansible_role_bat
+# Mirror to download the bat from
+bat_mirror: 'https://github.com/sharkdp/bat/releases/download/v{{ bat_version }}'
+
+# File name of the bat redistributable package
+bat_redis_filename: 'bat_{{ bat_version }}_amd64.deb'
+
+# URL of the bat redistributable package
+bat_redis_url: '{{ bat_mirror }}/{{ bat_redis_filename }}'
