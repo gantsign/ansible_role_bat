@@ -1,9 +1,9 @@
 ---
 # bat version number
-bat_version: '0.9.0'
+bat_version: '0.10.0'
 
 # The SHA256 of the bat redistributable package
-bat_redis_sha256sum: '0b97d912d57eb0504d4e81cafedb23991d5c927a2099c0c152575b2d956bcec5'
+bat_redis_sha256sum: '4323185b3d4afeae503a3e7305d7e50cedae52b3cde47a9a21a14d3c60b419f0'
 
 # Directory to store files downloaded for bat
 bat_download_dir: "{{ x_ansible_download_dir | default(ansible_env.HOME + '/.ansible/tmp/downloads') }}"
