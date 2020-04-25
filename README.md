@@ -37,10 +37,10 @@ are shown below):
 
 ```yaml
 # bat version number
-bat_version: '0.13.0'
+bat_version: '0.14.0'
 
 # The SHA256 of the bat redistributable package
-bat_redis_sha256sum: '70aa43695bb0fcf278999838d6b9e37356a170fea1cb866feaa927a1e709f3a0'
+bat_redis_sha256sum: '77d1e4600fc93c015ed807bdb0298ccdd1bde80a7ae9da87fd75571289c5b16a'
 
 # Directory to store files downloaded for bat
 bat_download_dir: "{{ x_ansible_download_dir | default(ansible_env.HOME + '/.ansible/tmp/downloads') }}"
