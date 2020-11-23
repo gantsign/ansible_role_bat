@@ -1,7 +1,7 @@
 Ansible Role: bat
 =================
 
-[![Build Status](https://travis-ci.com/gantsign/ansible_role_bat.svg?branch=master)](https://travis-ci.com/gantsign/ansible_role_bat)
+[![Tests](https://github.com/gantsign/ansible_role_bat/workflows/Tests/badge.svg)](https://github.com/gantsign/ansible_role_bat/actions?query=workflow%3ATests)
 [![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-gantsign.bat-blue.svg)](https://galaxy.ansible.com/gantsign/bat)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/gantsign/ansible_role_bat/master/LICENSE)
 
