@@ -19,7 +19,6 @@ Requirements
 
         * Debian
 
-            * Jessie (8)
             * Stretch (9)
 
         * Ubuntu

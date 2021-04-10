@@ -13,7 +13,6 @@ galaxy_info:
         - focal
     - name: Debian
       versions:
-        - jessie
         - stretch
   galaxy_tags:
     - bat
