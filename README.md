@@ -20,6 +20,7 @@ Requirements
         * Debian
 
             * Stretch (9)
+            * Buster (10)
 
         * Ubuntu
 
