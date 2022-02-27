@@ -3,7 +3,7 @@
 bat_mirror: 'https://github.com/sharkdp/bat/releases/download/v{{ bat_version }}'
 
 # File name of the bat redistributable package
-bat_redis_filename: 'bat_{{ bat_version }}_amd64.deb'
+bat_redis_filename: 'bat-musl_{{ bat_version }}_amd64.deb'
 
 # URL of the bat redistributable package
 bat_redis_url: '{{ bat_mirror }}/{{ bat_redis_filename }}'
