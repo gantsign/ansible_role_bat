@@ -1,11 +1,11 @@
 ---
-- name: create download directory
+- name: Create download directory
   ansible.builtin.file:
     state: directory
     mode: 'u=rwx,go=rx'
     dest: '{{ bat_download_dir }}'
 
-- name: download bat
+- name: Download bat
   ansible.builtin.get_url:
     url: '{{ bat_redis_url }}'
     checksum: 'sha256:{{ bat_redis_sha256sum }}'
@@ -13,7 +13,7 @@
     force: no
     mode: 'u=rw,go=r'
 
-- name: install bat
+- name: Install bat
   become: yes
   ansible.builtin.apt:
     deb: '{{ bat_download_dir }}/{{ bat_redis_filename }}'
