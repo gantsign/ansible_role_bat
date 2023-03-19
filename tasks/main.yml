@@ -15,5 +15,23 @@
 
 - name: Install bat
   become: yes
-  ansible.builtin.apt:
-    deb: '{{ bat_download_dir }}/{{ bat_redis_filename }}'
+  block:
+    - name: Install bat from local file
+      ansible.builtin.apt:
+        deb: '{{ bat_download_dir }}/{{ bat_redis_filename }}'
+        state: 'present'
+  rescue:
+    - name: Install xz-utils as deb requirements
+      ansible.builtin.apt:
+        package: 'xz-utils'
+        state: 'present'
+
+    - name: Make sure system is ready for selected bat version and remove bat
+      ansible.builtin.apt:
+        package: 'bat'
+        state: 'absent'
+
+    - name: Install remote
+      ansible.builtin.apt:
+        deb: '{{ bat_download_dir }}/{{ bat_redis_filename }}'
+        state: 'present'
