@@ -1,3 +1,4 @@
+# code: language=ansible
 ---
 # Mirror to download the bat from
 bat_mirror: 'https://github.com/sharkdp/bat/releases/download/v{{ bat_version }}'
